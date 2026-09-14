@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="European Roulette Statistical Sector Analyzer">
+<title>European Roulette Predictor</title>
+
+<style>
+* {
+box-sizing: border-box;
+}
+
+body {
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+Roboto, Arial, sans-serif;
+background-color: #0b1329;
+color: #ffffff;
+margin: 0;
+padding: 15px;
+}
+
+.app-card {
+max-width: 480px;
+margin: 0 auto;
+background: #162447;
+border-radius: 16px;
+padding: 18px;
+border: 1px solid #1f4068;
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+h2 {
+color: #00d2d3;
+text-align: center;
+margin-top: 0;
+margin-bottom: 5px;
+font-size: 20px;
+}
+
+p.sub {
+text-align: center;
+color: #848ccf;
+font-size: 12px;
+margin-bottom: 15px;
+}
+
+label {
+font-size: 13px;
+font-weight: bold;
+color: #eccc68;
+display: block;
+margin-bottom: 6px;
+}
+
+textarea {
+width: 100%;
+height: 75px;
+background: #0f172a;
+color: #ffda79;
+border: 1px solid #1f4068;
+border-radius: 10px;
+padding: 10px;
+font-size: 15px;
+resize: none;
+outline: none;
+}
+
+textarea:focus {
+border-color: #00d2d3;
+}
+
+button {
+background: #00d2d3;
+color: #0b1329;
+font-weight: bold;
+border: none;
+padding: 12px;
+border-radius: 10px;
+width: 100%;
+font-size: 15px;
+margin-top: 10px;
+cursor: pointer;
+transition: 0.2s;
+}
+
+button:hover {
+background: #19e6e7;
+}
+
+button:active {
+background: #00a8a9;
+transform: scale(0.99);
+}
+
+.main-target-box {
+background: rgba(123, 237, 159, 0.15);
+border: 2px solid #7bed9f;
+border-radius: 12px;
+padding: 15px;
+margin-top: 15px;
+text-align: center;
+}
+
+.main-title {
+color: #848ccf;
+font-size: 12px;
+text-transform: uppercase;
+font-weight: bold;
+letter-spacing: 0.5px;
+}
+
+.single-num {
+font-size: 45px;
+color: #7bed9f;
+font-weight: bold;
+margin: 5px 0;
+text-shadow: 0 0 10px rgba(123, 237, 159, 0.5);
+}
+
+.disclaimer {
+font-size: 10px;
+color: #8492a6;
+margin-top: 5px;
+line-height: 1.4;
+}
+
+.sec-box {
+background: rgba(255, 218, 121, 0.1);
+border: 1px solid #ffda79;
+border-radius: 10px;
+padding: 10px;
+margin-top: 10px;
+text-align: center;
+}
+
+.sec-nums {
+font-size: 18px;
+color: #ffda79;
+margin-top: 4px;
+font-weight: bold;
+line-height: 1.5;
+}
+
+.info-card {
+background: #0f172a;
+border: 1px solid #1f4068;
+border-radius: 10px;
+padding: 12px;
+margin-top: 12px;
+font-size: 13px;
+}
+
+.row {
+display: flex;
+justify-content: space-between;
+margin-bottom: 6px;
+gap: 10px;
+}
+
+.row:last-child {
+margin-bottom: 0;
+}
+
+.val {
+color: #ffda79;
+font-weight: bold;
+text-align: right;
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 8px;
+font-size: 13px;
+}
+
+th,
+td {
+border: 1px solid #1f4068;
+padding: 6px;
+text-align: center;
+}
+
+th {
+background-color: #0f172a;
+color: #00d2d3;
+}
+
+td {
+color: #ffffff;
+}
+
+.footer {
+text-align: center;
+margin-top: 15px;
+font-size: 10px;
+color: #68758a;
+line-height: 1.5;
+}
+
+@media (max-width: 400px) {
+body {
+padding: 8px;
+}
+
+.app-card {
+padding: 14px;
+}
+
+.single-num {
+font-size: 40px;
+}
+
+.sec-nums {
+font-size: 16px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="app-card">
+
+<h2>🎲 European Roulette Predictor</h2>
+
+<p class="sub">
+Statistical Sector Analysis &amp; Weighted Forecast
+</p>
+
+<label for="inputData">
+Enter Recent Roulette Numbers:
+</label>
+
+<textarea
+id="inputData"
+placeholder="Example: 0, 32, 15, 19, 4, 21, 2"
+aria-label="Roulette spin numbers"></textarea>
+
+<button onclick="runPredictor()">
+RUN ANALYSIS
+</button>
+
+<!-- Main Results -->
+<div class="main-target-box" id="resultCard" style="display:none;">
+
+<div class="main-title">
+🔥 HIGHEST WEIGHTED TARGET
+</div>
+
+<div class="single-num" id="nextSingleNum">
+-
+</div>
+
+<span style="font-size:11px; color:#a4b0be;">
+Highest-scoring sector target
+</span>
+
+<div class="sec-box">
+
+<div
+class="main-title"
+style="color:#ffda79;"
+>
+🎯 TOP 5 TARGETS
+</div>
+
+<div
+class="sec-nums"
+id="top5Out"
+>
+-
+</div>
+
+</div>
+
+<div
+class="sec-box"
+style="border-color:#00d2d3; margin-top:8px;"
+>
+
+<div
+class="main-title"
+style="color:#00d2d3;"
+>
+🛡️ SECONDARY TOP 8
+</div>
+
+<div
+class="sec-nums"
+id="top8Out"
+style="color:#00d2d3;"
+>
+-
+</div>
+
+</div>
+
+<div class="disclaimer">
+Statistical scoring only. Roulette outcomes are random,
+and this tool cannot guarantee the next winning number.
+</div>
+
+</div>
+
+<!-- Information -->
+<div
+class="info-card"
+id="infoCard"
+style="display:none;"
+>
+
+<div class="row">
+<span>Total Spins:</span>
+<span class="val" id="totalSpinsVal">-</span>
+</div>
+
+<div class="row">
+<span>Last Number:</span>
+<span class="val" id="lastVal">-</span>
+</div>
+
+<div class="row">
+<span>180° Opposite Target:</span>
+<span class="val" id="oppVal">-</span>
+</div>
+
+<div class="row">
+<span>±2 Wheel Neighbors:</span>
+<span class="val" id="neighborsVal">-</span>
+</div>
+
+</div>
+
+<!-- Frequency Analysis -->
+<div
+class="info-card"
+id="statsCard"
+style="display:none;"
+>
+
+<div
+class="main-title"
+style="color:#eccc68; text-align:center; margin-bottom:5px;"
+>
+🔥 FREQUENCY ANALYSIS
+</div>
+
+<table id="freqTable">
+
+<thead>
+<tr>
+<th>Number</th>
+<th>Hits</th>
+</tr>
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+</div>
+
+<div class="footer">
+European single-zero roulette wheel analysis.<br>
+For statistical analysis and entertainment purposes.
+</div>
+
+</div>
+
+
+<script>
+
+/*
+* European Roulette Wheel
+*
+* Standard European wheel order:
+* 0, 32, 15, 19, 4, 21, 2, 25, 17, 34,
+* 6, 27, 13, 36, 11, 30, 8, 23, 10, 5,
+* 24, 16, 33, 1, 20, 14, 31, 9, 22, 18,
+* 29, 7, 28, 12, 35, 3, 26
+*/
+
+const WHEEL = [
+0, 32, 15, 19, 4, 21, 2, 25, 17,
+34, 6, 27, 13, 36, 11, 30, 8, 23,
+10, 5, 24, 16, 33, 1, 20, 14, 31,
+9, 22, 18, 29, 7, 28, 12, 35, 3, 26
+];
+
+const N = WHEEL.length;
+
+
+function runPredictor() {
+
+const raw =
+document.getElementById("inputData").value;
+
+/*
+* Accept:
+* 1,2,3
+* 1 2 3
+* 1, 2, 3
+* Multiple lines
+*/
+
+const nums = raw
+.replace(/\n/g, ",")
+.split(/[\s,]+/)
+.map(x => parseInt(x.trim()))
+.filter(
+x =>
+!isNaN(x) &&
+x >= 0 &&
+x <= 36
+);
+
+
+if (nums.length === 0) {
+
+alert(
+"Please enter valid roulette numbers from 0 to 36."
+);
+
+return;
+}
+
+
+/*
+* Initialize scores for all 37 numbers.
+*/
+
+const scores = {};
+
+for (let i = 0; i < 37; i++) {
+scores[i] = 0;
+}
+
+
+/*
+* Weighted sector analysis.
+*
+* More recent entries receive a larger weight.
+*
+* Each entered number contributes score to
+* itself and its ±2 wheel neighbors.
+*/
+
+const total = nums.length;
+
+nums.forEach((num, index) => {
+
+const weight =
+(index + 1) / total;
+
+const idx =
+WHEEL.indexOf(num);
+
+if (idx !== -1) {
+
+for (let offset = -2; offset <= 2; offset++) {
+
+const target =
+WHEEL[
+(idx + offset + N) % N
+];
+
+scores[target] +=
+2.0 * weight;
+}
+}
+
+});
+
+
+/*
+* Sort numbers by weighted score.
+*/
+
+const sorted =
+Object.keys(scores).sort(
+(a, b) =>
+scores[b] - scores[a]
+);
+
+
+const singleBest =
+sorted[0];
+
+const top5 =
+sorted.slice(0, 5);
+
+const top8 =
+sorted.slice(0, 8);
+
+
+/*
+* Last spin information.
+*/
+
+const last =
+nums[nums.length - 1];
+
+const lastIdx =
+WHEEL.indexOf(last);
+
+
+/*
+* ±2 wheel neighbors.
+*/
+
+const l2 =
+WHEEL[
+(lastIdx - 2 + N) % N
+];
+
+const l1 =
+WHEEL[
+(lastIdx - 1 + N) % N
+];
+
+const r1 =
+WHEEL[
+(lastIdx + 1) % N
+];
+
+const r2 =
+WHEEL[
+(lastIdx + 2) % N
+];
+
+
+/*
+* Approximately 180° opposite position.
+*
+* A 37-number wheel does not have an exact
+* mathematical 180° opposite for every number,
+* so this uses an 18-position wheel offset.
+*/
+
+const opp =
+WHEEL[
+(lastIdx + 18) % N
+];
+
+
+/*
+* Frequency analysis.
+*/
+
+const freq = {};
+
+nums.forEach(n => {
+
+freq[n] =
+(freq[n] || 0) + 1;
+
+});
+
+
+const sortedFreq =
+Object.keys(freq)
+.map(n => [
+n,
+freq[n]
+])
+.sort(
+(a, b) =>
+b[1] - a[1]
+);
+
+
+/*
+* Update frequency table.
+*/
+
+const tbody =
+document
+.getElementById("freqTable")
+.getElementsByTagName("tbody")[0];
+
+tbody.innerHTML = "";
+
+
+sortedFreq
+.slice(0, 5)
+.forEach(item => {
+
+const row =
+tbody.insertRow();
+
+const cell1 =
+row.insertCell(0);
+
+const cell2 =
+row.insertCell(1);
+
+cell1.innerText =
+item[0];
+
+cell2.innerText =
+item[1];
+
+});
+
+
+/*
+* Update results.
+*/
+
+document
+.getElementById("nextSingleNum")
+.innerText = singleBest;
+
+document
+.getElementById("top5Out")
+.innerText =
+top5.join(", ");
+
+document
+.getElementById("top8Out")
+.innerText =
+top8.join(", ");
+
+
+/*
+* Update information card.
+*/
+
+document
+.getElementById("totalSpinsVal")
+.innerText = total;
+
+document
+.getElementById("lastVal")
+.innerText = last;
+
+document
+.getElementById("oppVal")
+.innerText = opp;
+
+document
+.getElementById("neighborsVal")
+.innerText =
+`${l2}, ${l1}, [${last}], ${r1}, ${r2}`;
+
+
+/*
+* Show result cards.
+*/
+
+document
+.getElementById("resultCard")
+.style.display = "block";
+
+document
+.getElementById("infoCard")
+.style.display = "block";
+
+document
+.getElementById("statsCard")
+.style.display = "block";
+
+}
+
+
+/*
+* Allow Enter + Ctrl/Cmd to run analysis.
+*/
+
+document
+.getElementById("inputData")
+.addEventListener(
+"keydown",
+function(event) {
+
+if (
+event.key === "Enter" &&
+(event.ctrlKey || event.metaKey)
+) {
+
+runPredictor();
+
+}
+
+}
+);
+
+</script>
+
+</body>
+</html>
