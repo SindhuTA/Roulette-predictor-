@@ -1,0 +1,349 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Class 10 Quiz Competition</title><style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f0f4f8;
+    color: #263238;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #0d47a1, #1976d2);
+    color: white;
+    text-align: center;
+    padding: 45px 20px;
+}
+
+header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 17px;
+    opacity: 0.9;
+}
+
+/* Navigation */
+nav {
+    background: #083779;
+    padding: 13px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+nav a:hover {
+    color: #ffeb3b;
+}
+
+/* Main Container */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 35px auto;
+}
+
+/* Section Heading */
+.section-title {
+    text-align: center;
+    color: #0d47a1;
+    font-size: 27px;
+    margin-bottom: 25px;
+}
+
+/* Welcome Card */
+.welcome {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 35px;
+}
+
+.welcome h2 {
+    color: #1565c0;
+    margin-bottom: 10px;
+}
+
+/* Sequence Cards */
+.sequence-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.card {
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: 0.3s;
+    border-top: 5px solid #1976d2;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.card h2 {
+    color: #1565c0;
+    margin-bottom: 18px;
+}
+
+.sequence {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.number {
+    background: #e3f2fd;
+    color: #0d47a1;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 18px;
+    min-width: 43px;
+}
+
+/* Table */
+.table-box {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    padding: 14px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background: #1565c0;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background: #e3f2fd;
+}
+
+tr:hover {
+    background: #bbdefb;
+}
+
+/* Buttons */
+.buttons {
+    text-align: center;
+    margin: 30px 0;
+}
+
+button {
+    background: #1565c0;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    margin: 8px;
+    border-radius: 7px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #0d47a1;
+}
+
+/* Footer */
+footer {
+    background: #083779;
+    color: white;
+    text-align: center;
+    padding: 22px;
+    margin-top: 40px;
+}
+
+footer p {
+    font-size: 14px;
+}
+
+/* Responsive Design */
+@media(max-width: 700px) {
+    header h1 {
+        font-size: 27px;
+    }
+
+    .sequence-container {
+        grid-template-columns: 1fr;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 5px 8px;
+    }
+
+    .container {
+        width: 94%;
+    }
+
+    th, td {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+/* Print */
+@media print {
+    nav, .buttons {
+        display: none;
+    }
+
+    body {
+        background: white;
+    }
+
+    .card, .welcome, .table-box {
+        box-shadow: none;
+    }
+}
+</style></head><body><!-- Header --><header>
+    <h1>🏆 Class 10 Quiz Competition</h1>
+    <p>Knowledge • Confidence • Excellence</p>
+    <p>Welcome to Our Quiz Competition!</p>
+</header><!-- Navigation --><nav>
+    <a href="#home">Home</a>
+    <a href="#sequences">Quiz Sequences</a>
+    <a href="#participants">Participants</a>
+</nav><div class="container"><!-- Welcome Section -->
+<section id="home" class="welcome">
+    <h2>Welcome Students!</h2>
+    <p>
+        Get ready to test your knowledge and showcase your talent.
+        Below are the participation sequences for the two days
+        of the Class 10 Quiz Competition.
+    </p>
+</section>
+
+<!-- Sequence Section -->
+<section id="sequences">
+
+    <h2 class="section-title">📋 Quiz Participation Sequences</h2>
+
+    <div class="sequence-container">
+
+        <!-- Day 1 -->
+        <div class="card">
+            <h2>📅 Day 1 Sequence</h2>
+
+            <div class="sequence">
+                <span class="number">22</span>
+                <span class="number">4</span>
+                <span class="number">1</span>
+                <span class="number">31</span>
+                <span class="number">9</span>
+                <span class="number">23</span>
+                <span class="number">6</span>
+                <span class="number">2</span>
+                <span class="number">6</span>
+            </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="card">
+            <h2>📅 Day 2 Sequence</h2>
+
+            <div class="sequence">
+                <span class="number">5</span>
+                <span class="number">14</span>
+                <span class="number">25</span>
+                <span class="number">10</span>
+                <span class="number">18</span>
+                <span class="number">7</span>
+                <span class="number">29</span>
+                <span class="number">13</span>
+                <span class="number">3</span>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Participants Table -->
+<section id="participants">
+
+    <h2 class="section-title">👨‍🎓 Student Participation Details</h2>
+
+    <div class="table-box">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Order</th>
+                    <th>Day 1 Roll Number</th>
+                    <th>Day 2 Roll Number</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr><td>1</td><td>22</td><td>5</td></tr>
+                <tr><td>2</td><td>4</td><td>14</td></tr>
+                <tr><td>3</td><td>1</td><td>25</td></tr>
+                <tr><td>4</td><td>31</td><td>10</td></tr>
+                <tr><td>5</td><td>9</td><td>18</td></tr>
+                <tr><td>6</td><td>23</td><td>7</td></tr>
+                <tr><td>7</td><td>6</td><td>29</td></tr>
+                <tr><td>8</td><td>2</td><td>13</td></tr>
+                <tr><td>9</td><td>6</td><td>3</td></tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+<!-- Buttons -->
+<div class="buttons">
+    <button onclick="window.print()">🖨️ Print Schedule</button>
+    <button onclick="window.scrollTo({top:0, behavior:'smooth'})">
+        ⬆ Back to Top
+    </button>
+</div>
+
+</div><!-- Footer --><footer>
+    <p>🏆 Class 10 Quiz Competition</p>
+    <p>Learn More • Think Better • Achieve More</p>
+    <p>© 2026 | All Rights Reserved</p>
+</footer></body>
+</html>
